@@ -1,0 +1,66 @@
+# Crystal Mountain, WA — ski area. Runs split by difficulty so they can be printed in
+# green / blue / black like a trail map, plus lifts, creeks and base-area buildings.
+name: Crystal Mountain
+slug: crystal-mountain
+bbox:
+  south: 46.903
+  west: -121.516
+  north: 46.966
+  east: -121.462
+
+model:
+  width_mm: 120        # east-west footprint; north-south follows from the bbox aspect
+  resolution_mm: 0.4
+  base_mm: 7
+  z_scale: 1.25
+  smooth_mm: 0.5
+  mode: parts          # parts (multi-colour) | emboss | engrave | plain
+
+label:
+  text: "Crystal Mountain, WA"
+  height_mm: 4
+  depth_mm: 0.6
+
+terrain_color: "#3f8f4f"
+
+layers:
+  - name: runs-easy
+    select: ['["piste:type"="downhill"]["piste:difficulty"~"^(novice|easy)$"]']
+    color: "#2ecc71"
+    width_mm: 1.4
+    raise_mm: 0.15
+    fill_closed: true
+  - name: runs-intermediate
+    select: ['["piste:type"="downhill"]["piste:difficulty"="intermediate"]']
+    color: "#1f4fd6"
+    width_mm: 1.4
+    raise_mm: 0.15
+    fill_closed: true
+  - name: runs-advanced
+    select:
+      - '["piste:type"="downhill"]["piste:difficulty"~"^(advanced|expert|extreme|freeride)$"]'
+      - '["piste:type"="downhill"][!"piste:difficulty"]'
+    color: "#111111"
+    width_mm: 1.4
+    raise_mm: 0.15
+    fill_closed: true
+  - name: lifts
+    select: ['["aerialway"~"^(chair_lift|gondola|cable_car|mixed_lift|t-bar|j-bar|platter|rope_tow|magic_carpet|drag_lift)$"]']
+    color: "#d0d0d0"
+    width_mm: 0.9
+    raise_mm: 0.8
+    embed_mm: 0.8
+  - name: water
+    select:
+      - '["waterway"~"^(river|stream)$"]'
+      - '["natural"="water"]'
+    color: "#5ad0ff"
+    width_mm: 0.8
+    raise_mm: 0.0
+    fill_closed: true
+  - name: buildings
+    select: ['["building"]']
+    color: "#bfbfbf"
+    width_mm: 0.8
+    raise_mm: 0.4
+    fill_closed: true

@@ -1,0 +1,49 @@
+# Raging River State Forest, WA — DNR mountain-bike trail system above Snoqualmie Point.
+# Trails are OSM paths/cycleways with mtb tags or bicycle=designated; forest roads are a
+# separate, lower-relief layer so climbs read differently from singletrack.
+name: Raging River
+slug: raging-river
+bbox:
+  south: 47.435
+  west: -121.875
+  north: 47.505
+  east: -121.790
+
+model:
+  width_mm: 140
+  resolution_mm: 0.4
+  base_mm: 7
+  z_scale: 1.5
+  smooth_mm: 0.6
+  mode: parts
+
+label:
+  text: "Raging River, WA"
+  height_mm: 4
+  depth_mm: 0.6
+
+terrain_color: "#3f8f4f"
+
+layers:
+  - name: trails
+    select:
+      - '["highway"~"^(path|cycleway)$"]["mtb:scale:imba"]'
+      - '["highway"~"^(path|cycleway)$"]["mtb:scale"]'
+      - '["highway"~"^(path|cycleway)$"]["bicycle"="designated"]'
+    color: "#f5f5f5"
+    width_mm: 1.0
+    raise_mm: 0.3
+  - name: roads
+    select: ['["highway"="track"]']
+    color: "#c8b48c"
+    width_mm: 0.8
+    raise_mm: 0.1
+    enabled: true
+  - name: water
+    select:
+      - '["waterway"~"^(river|stream)$"]'
+      - '["natural"="water"]'
+    color: "#5ad0ff"
+    width_mm: 0.8
+    raise_mm: 0.0
+    fill_closed: true

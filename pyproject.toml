@@ -1,0 +1,42 @@
+[project]
+name = "trailprint"
+version = "0.1.0"
+description = "3D-printable STL terrain models of ski areas and mountain-bike trail systems, built from open elevation data and OpenStreetMap."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "duncan-fixturfab" }]
+keywords = ["3d-printing", "stl", "terrain", "dem", "openstreetmap", "ski", "mountain-bike"]
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "pillow>=10.1",
+  "requests>=2.31",
+  "trimesh>=4.0",
+  "networkx>=3",
+  "lxml>=5",
+  "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+trailprint = "trailprint.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/trailprint"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
