@@ -5,9 +5,9 @@ name: Raging River
 slug: raging-river
 bbox:
   south: 47.435
-  west: -121.875
-  north: 47.505
-  east: -121.790
+  west: -121.868
+  north: 47.515
+  east: -121.800
 
 model:
   width_mm: 140
@@ -38,10 +38,10 @@ layers:
     color: "#c8b48c"
     width_mm: 0.8
     raise_mm: 0.1
-    enabled: true
+    enabled: false   # busy at this scale; turn on to show the climbing roads
   - name: water
     select:
-      - '["waterway"~"^(river|stream)$"]'
+      - '["waterway"~"^(river|stream)$"]["name"]'   # named creeks only; drop ["name"] for all
       - '["natural"="water"]'
     color: "#5ad0ff"
     width_mm: 0.8

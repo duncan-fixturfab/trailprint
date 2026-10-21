@@ -52,7 +52,7 @@ layers:
     embed_mm: 0.8
   - name: water
     select:
-      - '["waterway"~"^(river|stream)$"]'
+      - '["waterway"~"^(river|stream)$"]["name"]'   # named creeks only; drop ["name"] for all
       - '["natural"="water"]'
     color: "#5ad0ff"
     width_mm: 0.8
