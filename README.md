@@ -103,8 +103,13 @@ multipolygon relations (large lakes) and `route=mtb` relations are not expanded 
 
 | Area | Type | Notes |
 | --- | --- | --- |
-| `areas/crystal-mountain.yaml` | Ski (Crystal Mountain, WA) | Runs split green/blue/black, lifts, Silver Creek, base buildings |
-| `areas/raging-river.yaml` | MTB (Raging River State Forest, WA) | DNR singletrack, forest roads, the river |
+| `areas/crystal-mountain.yaml` | Ski (Crystal Mountain, WA) | Runs split green/blue/black, lifts, named creeks, base buildings |
+| `areas/raging-river.yaml` | MTB (Raging River State Forest, WA) | DNR singletrack, the Raging River; forest roads available as a layer |
+
+<p>
+<img src="docs/crystal-mountain-preview.png" width="340" alt="Crystal Mountain preview">
+<img src="docs/raging-river-preview.png" width="340" alt="Raging River preview">
+</p>
 
 ## How it works
 
